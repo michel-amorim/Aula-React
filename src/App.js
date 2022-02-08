@@ -3,19 +3,14 @@ import "./App.css";
 import { Component } from "react/cjs/react.production.min";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.handlePClick = this.handlePClick.bind(this);
+  state = {
+    name: "Michel Silva",
+    counter: 0,
+  };
 
-    this.state = {
-      name: "Michel Silva",
-      counter: 0,
-    };
-  }
-
-  handlePClick() {
+  handlePClick = () => {
     this.setState({ name: "Junior" });
-  }
+  };
 
   handleAClick = (event) => {
     event.preventDefault();
