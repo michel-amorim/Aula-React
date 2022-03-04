@@ -11,7 +11,7 @@ export class Home extends Component {
     posts: [],
     allPosts: [],
     page: 0,
-    postsPerPage: 50, // limite max de posts
+    postsPerPage: 12, // limite max de posts
   };
 
   async componentDidMount() {
