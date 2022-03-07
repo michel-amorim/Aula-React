@@ -12,7 +12,7 @@ export class Home extends Component {
     posts: [],
     allPosts: [],
     page: 0,
-    postsPerPage: 2, // limite max de posts
+    postsPerPage: 12,
     searchValue: "",
   };
 
@@ -31,7 +31,7 @@ export class Home extends Component {
   };
 
   loadMorePosts = () => {
-    const { posts, page, postsPerPage, allPosts } = this.state;
+    const { page, postsPerPage, allPosts, posts } = this.state;
     const nextPage = page + postsPerPage;
     const nextPosts = allPosts.slice(nextPage, nextPage + postsPerPage);
     posts.push(...nextPosts);
@@ -56,22 +56,17 @@ export class Home extends Component {
 
     return (
       <section className="container">
-        {!!searchValue && (
-          <>
-            <h1>Search value: {searchValue}</h1>
-          </>
-          // Avaliação de curto circuito
-        )}
+        <div class="search-container">
+          {!!searchValue && <h1>Search value: {searchValue}</h1>}
 
-        <TextInput
-          searchValue={{ searchValue }}
-          handleChange={this.handleChange}
-        />
-        <br />
-        <br />
-        <br />
+          <TextInput
+            searchValue={searchValue}
+            handleChange={this.handleChange}
+          />
+        </div>
 
         {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
+
         {filteredPosts.length === 0 && <p>Não existem posts =(</p>}
 
         <div className="button-container">
